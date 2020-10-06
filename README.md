@@ -1,11 +1,27 @@
-# Davsk Standard Project Layout
-## New repository
-You may wish to clone this standard project layout to create a Hugo website to be deployed on AppEngine with limited active content using Go HTTP. This is a bare bones empty repo to provide you with the project directory structure that we are all familiar. When creating a new Hugo website, we usually place public and client's content in separate repositories.
-``` bash
-    git remote remove origin
-```
-You may now publish the repository to your GitHub organization.
+# Davsk F.R.O.D.O.
+Package frodo implements Foundational Recursive Orthogonal Development Orders in a wise way.
 
+## Overview
+FRODO is an interactive tool for accomplishing a variety of simple tasks.
+
+You may use it 
+* from the command line interactively
+* in a batch file
+* include package in other apps
+
+## Usage
+### frodo
+Performs interactive evaluation and makes recommendations
+
+### frodo help
+Provides a list of all available commands
+
+### frodo install
+Provides a list of installation options
+
+### frodo install [tools]
+
+# Under Construction
 ## Installation
 Install prerequisites first.
 
