@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a0493d4-bebe-4491-bd07-1e0fb83db326" name="Default Changelist" comment="">
+    <list default="true" id="2a0493d4-bebe-4491-bd07-1e0fb83db326" name="Default Changelist" comment="Updated doc.go">
       <change beforePath="$PROJECT_DIR$/doc.go" beforeDir="false" afterPath="$PROJECT_DIR$/doc.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,10 +45,22 @@
       <option name="presentableId" value="Default" />
       <updated>1617304080037</updated>
     </task>
+    <task id="LOCAL-00001" summary="Updated doc.go">
+      <created>1617394990003</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1617394990004</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Updated doc.go" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated doc.go" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
