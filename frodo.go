@@ -1,5 +1,25 @@
+// 'frodo.go'
+
+// Package frodo automates updates.
 package frodo
 
-func main() {
+import (
+  runtime
+)
 
+isDarwin := false
+isLinux := false
+isWindows := false
+isUnknown := false
+
+func main() {
+  switch ( runtime.GOOS )
+  case "darwin"
+    isDarwin = true
+  case "linux"
+   isLinux = true
+  case "windows"
+    isWindows = true
+  default
+    isUnknown = true
 }
