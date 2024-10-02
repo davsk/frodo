@@ -42,8 +42,8 @@ Developer mode must be enable for mklink to create symbolic links.
 In your `Documents/GitHub/Davsk/' folder, execute each line in Git Bash.
 
 ``` bash
-    git clone git@github.com:Davsk/Project-Online.git
-    cd Project-Online
+    git clone git@github.com:Davsk/frodo.git
+    cd frodo
     scripts/init-subs.sh
 ```
 
