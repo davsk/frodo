@@ -1,0 +1,3 @@
+[submodule "scripts/update-golang"]
+	path = scripts/update-golang
+	url = git@github.com:udhos/update-golang.git
