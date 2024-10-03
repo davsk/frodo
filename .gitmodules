@@ -1,3 +1,6 @@
 [submodule "scripts/update-golang"]
 	path = scripts/update-golang
 	url = git@github.com:udhos/update-golang.git
+[submodule "assets/font"]
+	path = assets/font
+	url = git@github.com:davsk/font.git
