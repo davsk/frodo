@@ -1,7 +1,7 @@
 // 'frodo.go'
 
 // Package frodo automates updates.
-package frodo
+package frodo // import "go.davsk.net/frodo"
 
 import (
   runtime
