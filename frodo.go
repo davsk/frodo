@@ -33,17 +33,9 @@ func DarwinMustDoit(arch) {
  func LinuxMustDoit(arch) {
    if ( arch != "Amd86" ) {
      ReportUnknown( runtime.GOOS, runtime,GOARCH )
-   } else if ( // test for pacman ) {
+   } else if ( not pacman ) {
+      ReportError("Not Arch Linux"
+                  } else {
+                  ArchMustDoit()
    }
-  
-  switch ( runtime.GOARCH ) {
-    case "amd64" :
-    isAmd64 = true
-    default:
-    isAmd64 = false
-    }
-
-  if ( isDarwin ) {
-    Darwin.mustDoit()
-    } else if ( isLinux 
   }
