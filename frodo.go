@@ -5,16 +5,16 @@ package frodo // import "go.davsk.net/frodo"
 
 import (
   runtime
+
+  go.davsk.net/frodo/pkg/auto_update
+
 )
 
-isDarwin := false
-isLinux := false
-isWindows := false
-isUnknown := false
-isAmd64 := false
-
 func main() {
-  switch ( runtime.GOOS ) {
+
+	auto_update.MustDoit("frodo","github.com/davsk/frodo","v0.0.1")
+
+switch ( runtime.GOOS ) {
   case "darwin":
     DarwinMustDoit( runtime.GOARCH )
   case "linux":

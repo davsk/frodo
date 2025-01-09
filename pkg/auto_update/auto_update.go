@@ -15,14 +15,15 @@ import (
 )
 
 // func MustDoit checks for a new version and updates when one is found.
-func MustDoit() {
+// It recieves prgName, repoURL, and semVer.
+func MustDoit(prgName string, repoURL string, semVer string) {
 	u := &updater.Updater{
 		Provider: &provider.Github{
-			RepositoryURL: "github.com/davsk/frodo",
+			RepositoryURL: repoURL,
 			ArchiveName:   fmt.Sprintf("binaries_%s.zip", runtime.GOOS),
 		},
-		ExecutableName: fmt.Sprintf("frodo_%s_%s", runtime.GOOS, runtime.GOARCH),
-		Version:        "v0.1.0", // You can change this value to trigger an update
+		ExecutableName: fmt.Sprintf("%s_%s_%s", prgName, runtime.GOOS, runtime.GOARCH),
+		Version:        semVer, // You can change this value to trigger an update
 	}
 
 	versionFlag := false
