@@ -1,0 +1,11 @@
+# github.com/jfeliu007/goplantuml v1.6.2
+## explicit
+# github.com/kardianos/osext v0.0.0-20190222173326-2bc1f35cddc0
+github.com/kardianos/osext
+# github.com/mouuff/go-rocket-update v1.5.4
+## explicit
+github.com/mouuff/go-rocket-update/internal/constant
+github.com/mouuff/go-rocket-update/internal/crypto
+github.com/mouuff/go-rocket-update/internal/fileio
+github.com/mouuff/go-rocket-update/pkg/provider
+github.com/mouuff/go-rocket-update/pkg/updater
