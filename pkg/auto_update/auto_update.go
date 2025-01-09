@@ -1,7 +1,7 @@
 // go.davsk.net/frodo/pkg/auto_update
 
 // package auto_update is a davsk wrapper for go-rocket-update
-package auto_update
+package auto_update // import "go.davsk.net/frodo/pkg/auto_update"
 
 import (
 	"flag"
