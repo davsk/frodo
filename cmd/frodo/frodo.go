@@ -3,8 +3,6 @@
 package main
 
 import (
-	"runtime"
-
 	"go.davsk.net/frodo/pkg/auto_update"
 	"go.davsk.net/frodo/pkg/config"
 )
