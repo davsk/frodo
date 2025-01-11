@@ -46,7 +46,7 @@ In your `Documents/GitHub/Davsk/' folder, execute each line in Git Bash.
 ``` bash
     git clone git@github.com:Davsk/frodo.git
     cd frodo
-    scripts/init-subs.sh
+    scripts/init.zsh
 ```
 
 ## Company specific layout decisions
