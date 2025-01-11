@@ -1,6 +1,8 @@
 # Davsk F.R.O.D.O.
 Package frodo implements Foundational Recursive Orthogonal Development Orders in a wise way.
 
+[![Go Reference](https://pkg.go.dev/badge/go.davsk.net/frodo/.svg)](https://pkg.go.dev/go.davsk.net/frodo/)
+
 ## Overview
 FRODO is an interactive tool for accomplishing a variety of simple tasks.
 

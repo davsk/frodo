@@ -7,7 +7,7 @@
 // copyright (c) 2025 Davsk Ltd Co
 
 // package install contains functions to install apps on dev system
-package install
+package install // import "go.davsk.net/frodo/pkg/install"
 
 import (
 	"fmt"
