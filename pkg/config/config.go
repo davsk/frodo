@@ -1,3 +1,5 @@
+// 'frodo/pkg/config/config.go'
+
 // Package config contains the init, edit, save, and load of the frodo config.
 package config
 
