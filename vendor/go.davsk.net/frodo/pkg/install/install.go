@@ -48,6 +48,4 @@ func hashicorp() {
 	cmd := exec.Command("brew", "update")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
-	cmd.Start()
-	cmd.Wait()
 }
