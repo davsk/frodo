@@ -10,9 +10,12 @@ on:
 
 permissions:
   contents: write
-  # packages: write
-  # issues: write
-  # id-token: write
+  packages: write
+  issues: write
+  id-token: write
+
+build:
+  main: ./cmd/frodo
 
 jobs:
   goreleaser:
