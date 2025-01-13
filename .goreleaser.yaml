@@ -15,15 +15,13 @@ before:
     - go generate ./...
 
 builds:
-  - id: frodox
-  - main: ./cmd/frodo
   - env:
       - CGO_ENABLED=0
     goos:
       - linux
       - windows
       - darwin
-
+    main: ./cmd/frodo
 archives:
   - format: tar.gz
     # this name template makes the OS and Arch compatible with the results of `uname`.
