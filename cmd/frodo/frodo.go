@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	install.hashicorp()
+	install.Hashicorp()
 	auto_update.MustDoit("frodo", "github.com/davsk/frodo", "v0.0.1")
 	config.Load()
 }
