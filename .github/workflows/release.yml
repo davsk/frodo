@@ -14,8 +14,6 @@ permissions:
   issues: write
   id-token: write
 
-build:
-  main: ./cmd/frodo
 
 jobs:
   goreleaser:
@@ -43,3 +41,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Your GoReleaser Pro key, if you are using the 'goreleaser-pro' distribution
           # GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
+build:
+  main: ./cmd/frodo
