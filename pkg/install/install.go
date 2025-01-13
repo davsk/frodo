@@ -45,7 +45,7 @@ func logf(format string, args ...interface{}) {
 
 // func hashicorp installs the hashicorp tools
 func Hashicorp() {
-	cmd := exec.Command("brew", "update")
+	cmd := exec.Command("brew", "upgrade")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	err := cmd.Start()
