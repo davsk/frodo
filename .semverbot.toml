@@ -3,15 +3,16 @@ mode = "auto"
 [git]
 
 [git.config]
-email = "semverbot@github.com"
-name = "semverbot"
+email = "skinner.david@gmail.com"
+name = "comaldave"
 
 [git.tags]
 prefix = "v"
+suffix = "-alpha"
 
 [semver]
 patch = ["fix", "bug"]
-minor = ["feature"]
+minor = ["feature","feat"]
 major = ["release"]
 
 [modes]

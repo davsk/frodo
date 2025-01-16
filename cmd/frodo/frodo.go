@@ -9,7 +9,8 @@ import (
 )
 
 func main() {
+	profile := config.Load()
+	update.System()
+	auto_update.MustDoit("frodo", "github.com/davsk/frodo", "v0.1.6-alpha")
 	install.Hashicorp()
-	auto_update.MustDoit("frodo", "github.com/davsk/frodo", "v0.0.1")
-	config.Load()
 }
