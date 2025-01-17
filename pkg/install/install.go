@@ -6,6 +6,9 @@
 
 // copyright (c) 2025 Davsk Ltd Co
 
+// package functions for all os are in this file,
+// os specific versions of functions belong in os specific source.
+
 // package install contains functions to install apps on dev system
 package install // import "go.davsk.net/frodo/pkg/install"
 
@@ -15,7 +18,7 @@ import (
 	"os/exec"
 )
 
-// func must receives error and panics
+// func must receive error and panic
 func must(err error) {
 	if err != nil {
 		fmt.Printf("err: %s\n", err)
@@ -24,7 +27,7 @@ func must(err error) {
 }
 
 // func assert receives a condition, format, and args
-// returns a panic if condition is not true
+// returns a panic if the condition is not true
 func assert(cond bool, format string, args ...interface{}) {
 	if cond {
 		return
@@ -33,14 +36,25 @@ func assert(cond bool, format string, args ...interface{}) {
 	panic(s)
 }
 
-// func logf receives a format and args to print
-// a centralized place allows us to tweak logging, if need be
+// func logf receives a format and args to print.
+// A centralized place allows us to tweak logging, if need be
 func logf(format string, args ...interface{}) {
 	if len(args) == 0 {
 		fmt.Print(format)
 		return
 	}
 	fmt.Printf(format, args...)
+}
+
+// func checkAndInstall receives a command to find and an install command to execute if it is missing.
+func checkAndInstall(cmd string, installCmd string) error {
+	if _, err := exec.LookPath(cmd); err != nil {
+		fmt.Printf("%s is not installed. Installing...\n", cmd)
+		command := strings.Split(installCmd, " ")
+		return exec.Command(command[0], command[1:]...).Run()
+	}
+	fmt.Printf("%s is already installed.\n", cmd)
+	return nil
 }
 
 // func hashicorp installs the hashicorp  tools
@@ -63,16 +77,7 @@ import (
 	"strings"
 )
 
-// checkAndInstall checks if a command exists and installs it if missing.
-func checkAndInstall(cmd string, installCmd string) error {
-	if _, err := exec.LookPath(cmd); err != nil {
-		fmt.Printf("%s is not installed. Installing...\n", cmd)
-		command := strings.Split(installCmd, " ")
-		return exec.Command(command[0], command[1:]...).Run()
-	}
-	fmt.Printf("%s is already installed.\n", cmd)
-	return nil
-}
+
 
 // installGo installs Go based on the detected OS/architecture.
 func installGo() error {
