@@ -41,8 +41,3 @@ func becomeAdmin() {
    	}
 }
 
-func checkAdmin() bool {
-   	_, err := os.Open("\\\\.\\PHYSICALDRIVE0")
-
-    return err == nil
-}
