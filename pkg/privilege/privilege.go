@@ -13,6 +13,7 @@ package privilege
 
 import (
   "os"
+  "time"
 )
 
 func checkAdmin() bool {
