@@ -1,6 +1,4 @@
-//go:build linux
 // +build linux
-
 // file: 'frodo/pkg/update/update_linux.go'
 
 // by David Lynn Skinner
