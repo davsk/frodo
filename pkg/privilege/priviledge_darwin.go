@@ -12,3 +12,9 @@
 // and restarts with the requested privilege
 
 package privilege
+
+func becomeAdmin() {
+//   	exe, _ := os.Executable()
+//   	cwd, _ := os.Getwd()
+//   	args := strings.Join(os.Args[1:], " ")
+ }
