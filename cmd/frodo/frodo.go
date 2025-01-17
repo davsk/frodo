@@ -3,12 +3,14 @@
 package main
 
 import (
+	"go.davsk.net/frodo/pkg/privilege"
 	"go.davsk.net/frodo/pkg/auto_update"
 	"go.davsk.net/frodo/pkg/config"
 	"go.davsk.net/frodo/pkg/install"
 )
 
 func main() {
+	privilege.Verify()
 	profile := config.Load()
 	update.System()
 	auto_update.MustDoit("frodo", "github.com/davsk/frodo", "v0.1.6-alpha")
