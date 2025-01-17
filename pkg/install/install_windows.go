@@ -1,5 +1,5 @@
 // +build windows
-// file: 'frodo/pkg/windows/windows_darwin.go'
+// file: 'frodo/pkg/install/install_windows.go'
 
 // by David Lynn Skinner
 // on January 16, 2025
