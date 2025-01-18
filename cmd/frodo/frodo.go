@@ -15,7 +15,6 @@ func main() {
 	// Load profile from environment and gh
 	//profile := config.Load()
 
-	//
 	//auto_update.MustDoit("frodo", "github.com/davsk/frodo", "v0.1.6-alpha")
 
 	privilege.Verify()
