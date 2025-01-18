@@ -16,15 +16,15 @@ package privilege
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"os/exec"
-	"log"
 	"strings"
 )
 
 func Doit(runCommand string) {
 	aCommand := strings.Split(runCommand, " ")
-	cmd := exec.Command("sudo", aCommand[1:]...)
+	cmd := exec.Command("sudo", aCommand[0:]...)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	err := cmd.Run()
