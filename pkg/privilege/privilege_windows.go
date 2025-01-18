@@ -23,15 +23,15 @@ import (
 )
 
 func Doit(runCommand string) {
-	aCommand := strings.Split(runCommand, " ")
-	cmd := exec.Command("sudo", aCommand[1:]...)
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	err := cmd.Run()
-
-	if err != nil {
-		log.Fatalf("cmd.Run() failed with %s\n", err)
-	}
+	// aCommand := strings.Split(runCommand, " ")
+	// cmd := exec.Command("sudo", aCommand[1:]...)
+	// cmd.Stdout = os.Stdout
+	// cmd.Stderr = os.Stderr
+	// err := cmd.Run()
+	//
+	// if err != nil {
+	// 	log.Fatalf("cmd.Run() failed with %s\n", err)
+	// }
 }
 
 func becomeAdmin() {
