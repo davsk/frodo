@@ -3,11 +3,11 @@
 package main
 
 import (
-	"fmt"
+	//"fmt"
 
-	"go.davsk.net/frodo/pkg/auto_update"
-	"go.davsk.net/frodo/pkg/config"
-	"go.davsk.net/frodo/pkg/install"
+	//"go.davsk.net/frodo/pkg/auto_update"
+	//"go.davsk.net/frodo/pkg/config"
+	//"go.davsk.net/frodo/pkg/install"
 	"go.davsk.net/frodo/pkg/privilege"
 )
 
@@ -18,8 +18,8 @@ func main() {
 	//
 	//auto_update.MustDoit("frodo", "github.com/davsk/frodo", "v0.1.6-alpha")
 
-	a := privilege.Verify()
-	fmt.Println(a)
+	privilege.Verify()
+	//fmt.Println(a)
 	//	update.System()
 	//} else {
 	//	install.Hashicorp()
