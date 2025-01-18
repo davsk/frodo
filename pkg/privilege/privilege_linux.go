@@ -1,6 +1,7 @@
+//go:build linux
 // +build linux
-// file: 'frodo/pkg/privilege/privilege_linux.go'
 
+// file: 'frodo/pkg/privilege/privilege_linux.go'
 
 // by David Lynn Skinner
 // on January 10, 2025
@@ -13,8 +14,28 @@
 
 package privilege
 
+import (
+	"fmt"
+	"os"
+	"os/exec"
+)
+
 func becomeAdmin() {
-//   	exe, _ := os.Executable()
-//   	cwd, _ := os.Getwd()
-//   	args := strings.Join(os.Args[1:], " ")
- }
+	//   	exe, _ := os.Executable()
+	//   	cwd, _ := os.Getwd()
+	//   	args := strings.Join(os.Args[1:], " ")
+	cmd := exec.Command("sudo", "ls", "-l", "/root")
+
+	// Set the appropriate environment variables
+	cmd.Env = append(os.Environ(), "SUDO_ASKPASS=/usr/bin/ssh-askpass")
+
+	// If the command requires input, you can provide it like this:
+	// cmd.Stdin = strings.NewReader("your_password\n")
+
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		fmt.Println("Error:", err)
+	}
+
+	fmt.Println(string(output))
+}

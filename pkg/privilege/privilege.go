@@ -8,7 +8,7 @@
 // copyright (c) 2025 Davsk Ltd Co
 
 // package privilege checks for root, sudo, or admin privilege
-// and restarts with the requested privilege
+// and chains  with the requested privilege
 package privilege
 
 import (
