@@ -17,7 +17,7 @@ func main() {
 
 	//auto_update.MustDoit("frodo", "github.com/davsk/frodo", "v0.1.6-alpha")
 
-	privilege.Verify()
+	privilege.Doit("yay")
 	//fmt.Println(a)
 	//	update.System()
 	//} else {

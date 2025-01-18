@@ -67,6 +67,7 @@ func Hashicorp() {
 	must(err)
 	cmd.Wait()
 }
+
 /*
 package main
 

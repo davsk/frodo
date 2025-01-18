@@ -16,6 +16,7 @@ import (
   "time"
 )
 
+
 func checkAdmin() bool {
    	_, err := os.Open("\\\\.\\PHYSICALDRIVE0")
 
