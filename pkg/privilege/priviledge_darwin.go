@@ -16,6 +16,8 @@ package privilege
 
 import (
 	"log"
+	"os"
+	"os/exec"
 	"strings"
 )
 
