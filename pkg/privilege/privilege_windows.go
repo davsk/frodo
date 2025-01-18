@@ -20,7 +20,6 @@ import (
 	"os"
 	"strings"
 	"syscall"
-	"time"
 )
 
 func becomeAdmin() {
@@ -34,8 +33,7 @@ func becomeAdmin() {
 	cwdPtr, _ := syscall.UTF16PtrFromString(cwd)
 	argPtr, _ := syscall.UTF16PtrFromString(args)
 
-	//var showCmd int32: 1 //SW_NORMAL
-	showCmd := 1
+	var showCmd int32 = 1 //SW_NORMAL
 
 	err := windows.ShellExecute(0, verbPtr, exePtr, argPtr, cwdPtr, showCmd)
 	if err != nil {
