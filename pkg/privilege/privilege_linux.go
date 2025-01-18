@@ -18,6 +18,8 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"log"
+	"strings"
 )
 
 func Doit(runCommand string) {

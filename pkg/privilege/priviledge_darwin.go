@@ -1,6 +1,7 @@
+//go:build darwin
 // +build darwin
-// file: 'frodo/pkg/privilege/privilege_darwin.go'
 
+// file: 'frodo/pkg/privilege/privilege_darwin.go'
 
 // by David Lynn Skinner
 // on January 10, 2025
@@ -13,20 +14,25 @@
 
 package privilege
 
+import (
+	"log"
+	"strings"
+)
+
 func becomeAdmin() {
-//   	exe, _ := os.Executable()
-//   	cwd, _ := os.Getwd()
-//   	args := strings.Join(os.Args[1:], " ")
- }
+	//   	exe, _ := os.Executable()
+	//   	cwd, _ := os.Getwd()
+	//   	args := strings.Join(os.Args[1:], " ")
+}
 
- func Doit(runCommand string) {
-	 aCommand := strings.Split(runCommand, " ")
-	 cmd := exec.Command("sudo", aCommand[1:]...)
-	 cmd.Stdout = os.Stdout
-	 cmd.Stderr = os.Stderr
-	 err := cmd.Run()
+func Doit(runCommand string) {
+	aCommand := strings.Split(runCommand, " ")
+	cmd := exec.Command("sudo", aCommand[1:]...)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	err := cmd.Run()
 
-	 if err != nil {
-		 log.Fatalf("cmd.Run() failed with %s\n", err)
-	 }
- }
+	if err != nil {
+		log.Fatalf("cmd.Run() failed with %s\n", err)
+	}
+}
