@@ -17,10 +17,20 @@ import (
 // func MustDoit checks for a new version and updates when one is found.
 // It recieves prgName, repoURL, and semVer.
 func MustDoit(prgName string, repoURL string, semVer string) {
+	// Determine the appropriate file name extension based on the operating system
+	var fileNameExtension string
+	switch runtime.GOOS {
+	case "windows":
+		fileNameExtension = "zip"
+	default:
+		fileNameExtension = "tar.gz"
+	}
+
+	// define updater
 	u := &updater.Updater{
 		Provider: &provider.Github{
 			RepositoryURL: repoURL,
-			ArchiveName:   fmt.Sprintf("binaries_%s.zip", runtime.GOOS),
+			ArchiveName:   fmt.Sprintf("frodo_%s.%s", runtime.GOOS, fileNameExtension),
 		},
 		ExecutableName: fmt.Sprintf("%s_%s_%s", prgName, runtime.GOOS, runtime.GOARCH),
 		Version:        semVer, // You can change this value to trigger an update
