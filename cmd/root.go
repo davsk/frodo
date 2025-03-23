@@ -40,8 +40,8 @@ func init() {
 	viper.SetDefault("author", "NAME HERE <EMAIL ADDRESS>")
 	viper.SetDefault("license", "MIT")
 
-	rootCmd.AddCommand(addCmd)
-	rootCmd.AddCommand(initCmd)
+	//rootCmd.AddCommand(addCmd)
+	//rootCmd.AddCommand(initCmd)
 }
 
 func initConfig() {
