@@ -4,10 +4,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"io"
-	"io/ioutil"
 	"os"
-
-	"github.com/kardianos/osext"
 )
 
 // CopyFile copies file contents from file source to file destination
@@ -75,10 +72,10 @@ func CompareFiles(fileA, fileB string) (bool, error) {
 
 // TempDir creates a new temporary directory
 func TempDir() (string, error) {
-	return ioutil.TempDir("", "rocket-updater")
+	return os.MkdirTemp("", "rocket-updater")
 }
 
 // GetExecutable get the path to the current executable
 func GetExecutable() (string, error) {
-	return osext.Executable()
+	return os.Executable()
 }
