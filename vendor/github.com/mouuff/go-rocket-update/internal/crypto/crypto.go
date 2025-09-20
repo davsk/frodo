@@ -7,7 +7,7 @@ import (
 	"crypto/sha256"
 	"crypto/x509"
 	"encoding/pem"
-	"errors"
+	"fmt"
 	"io"
 	"os"
 )
@@ -38,11 +38,11 @@ func GeneratePrivateKey() (*rsa.PrivateKey, error) {
 func GetFileSignature(priv *rsa.PrivateKey, path string) ([]byte, error) {
 	hash, err := ChecksumFileSHA256(path)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("could not checksum file: %w", err)
 	}
 	signature, err := rsa.SignPKCS1v15(rand.Reader, priv, crypto.SHA256, hash)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("could not PKCS1v15 sign file: %w", err)
 	}
 	return signature, nil
 }
@@ -51,11 +51,11 @@ func GetFileSignature(priv *rsa.PrivateKey, path string) ([]byte, error) {
 func VerifyFileSignature(pub *rsa.PublicKey, signature []byte, path string) error {
 	hash, err := ChecksumFileSHA256(path)
 	if err != nil {
-		return err
+		return fmt.Errorf("could not checksum file: %w", err)
 	}
 	err = rsa.VerifyPKCS1v15(pub, crypto.SHA256, hash, signature)
 	if err != nil {
-		return err
+		return fmt.Errorf("could not PKCS1v15 verify file: %w", err)
 	}
 	return nil
 }
@@ -76,12 +76,12 @@ func ExportPrivateKeyAsPem(privateKey *rsa.PrivateKey) []byte {
 func ParsePemPrivateKey(privPEM []byte) (*rsa.PrivateKey, error) {
 	block, _ := pem.Decode(privPEM)
 	if block == nil {
-		return nil, errors.New("failed to parse PEM block containing the key")
+		return nil, fmt.Errorf("failed to parse PEM block containing the key")
 	}
 
 	priv, err := x509.ParsePKCS1PrivateKey(block.Bytes)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("could not parse PKCS1 private key: %w", err)
 	}
 
 	return priv, nil
@@ -91,7 +91,7 @@ func ParsePemPrivateKey(privPEM []byte) (*rsa.PrivateKey, error) {
 func ExportPublicKeyAsPem(publicKey *rsa.PublicKey) ([]byte, error) {
 	pubkeyBytes, err := x509.MarshalPKIXPublicKey(publicKey)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("could not PKIX marshal public key: %w", err)
 	}
 	pubkeyPem := pem.EncodeToMemory(
 		&pem.Block{
@@ -106,12 +106,12 @@ func ExportPublicKeyAsPem(publicKey *rsa.PublicKey) ([]byte, error) {
 func ParsePemPublicKey(pubPEM []byte) (*rsa.PublicKey, error) {
 	block, _ := pem.Decode(pubPEM)
 	if block == nil {
-		return nil, errors.New("failed to parse PEM block containing the key")
+		return nil, fmt.Errorf("failed to parse PEM block containing the key")
 	}
 
 	pub, err := x509.ParsePKIXPublicKey(block.Bytes)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("could not parse PKIX public key: %w", err)
 	}
 
 	switch pub := pub.(type) {
@@ -120,5 +120,5 @@ func ParsePemPublicKey(pubPEM []byte) (*rsa.PublicKey, error) {
 	default:
 		break
 	}
-	return nil, errors.New("Key type is not rsa.PublicKey")
+	return nil, fmt.Errorf("key type is not rsa.PublicKey")
 }
