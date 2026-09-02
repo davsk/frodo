@@ -1,12 +1,12 @@
 module go.davsk.net/frodo
 
-go 1.23.4
+go 1.25.0
 
 require (
 	github.com/mouuff/go-rocket-update v1.5.4
 	github.com/spf13/cobra v1.9.1
 	github.com/spf13/viper v1.20.0
-	golang.org/x/sys v0.31.0
+	golang.org/x/sys v0.47.0
 )
 
 require (
