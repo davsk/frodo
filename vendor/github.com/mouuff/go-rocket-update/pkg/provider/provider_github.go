@@ -2,7 +2,6 @@ package provider
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -41,7 +40,7 @@ func (c *Github) repositoryInfo() (*githubRepositoryInfo, error) {
 	re := regexp.MustCompile(`github\.com/(.*?)/(.*?)$`)
 	submatches := re.FindAllStringSubmatch(c.RepositoryURL, 1)
 	if len(submatches) < 1 {
-		return nil, errors.New("Invalid github URL:" + c.RepositoryURL)
+		return nil, fmt.Errorf("invalid github URL: %s", c.RepositoryURL)
 	}
 	return &githubRepositoryInfo{
 		RepositoryOwner: submatches[0][1],
@@ -159,7 +158,7 @@ func (c *Github) GetLatestVersion() (string, error) {
 		return "", err
 	}
 	if len(tags) < 1 {
-		return "", errors.New("This github project has no tags")
+		return "", fmt.Errorf("this github project has no tags")
 	}
 	return tags[0].Name, nil
 }

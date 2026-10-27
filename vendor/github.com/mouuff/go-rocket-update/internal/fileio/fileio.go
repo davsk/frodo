@@ -3,11 +3,11 @@ package fileio
 import (
 	"crypto/sha256"
 	"encoding/hex"
+	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
-
-	"github.com/kardianos/osext"
+	"path/filepath"
+	"strings"
 )
 
 // CopyFile copies file contents from file source to file destination
@@ -75,10 +75,26 @@ func CompareFiles(fileA, fileB string) (bool, error) {
 
 // TempDir creates a new temporary directory
 func TempDir() (string, error) {
-	return ioutil.TempDir("", "rocket-updater")
+	return os.MkdirTemp("", "rocket-updater")
 }
 
 // GetExecutable get the path to the current executable
 func GetExecutable() (string, error) {
-	return osext.Executable()
+	return os.Executable()
+}
+
+// SafeJoin joins name onto dest and guarantees the result stays within dest.
+// It rejects archive entries that use ".." to escape the extraction directory
+// (Zip Slip, CWE-22), so entry names taken from an untrusted archive cannot be
+// used to write outside dest.
+func SafeJoin(dest, name string) (string, error) {
+	dest = filepath.Clean(dest)
+	path := filepath.Join(dest, name)
+
+	rel, err := filepath.Rel(dest, path)
+	if err != nil || rel == ".." || strings.HasPrefix(rel, ".."+string(os.PathSeparator)) {
+		return "", fmt.Errorf("fileio: illegal archive path: %q", name)
+	}
+
+	return path, nil
 }

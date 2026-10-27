@@ -3,8 +3,7 @@ package crypto
 import (
 	"crypto/rsa"
 	"encoding/json"
-	"errors"
-	"io/ioutil"
+	"fmt"
 	"os"
 	"path/filepath"
 )
@@ -43,7 +42,7 @@ func GetFolderSignatures(priv *rsa.PrivateKey, root string) (*Signatures, error)
 
 // LoadSignaturesFromJSON loads signatures from a JSON file
 func LoadSignaturesFromJSON(path string) (signatures *Signatures, err error) {
-	signaturesJSON, err := ioutil.ReadFile(path)
+	signaturesJSON, err := os.ReadFile(path)
 	if err != nil {
 		return
 	}
@@ -61,7 +60,7 @@ func WriteSignaturesToJSON(dest string, signatures *Signatures) error {
 	if err != nil {
 		return err
 	}
-	err = ioutil.WriteFile(dest, signaturesJSON, 0644)
+	err = os.WriteFile(dest, signaturesJSON, 0644)
 	if err != nil {
 		return err
 	}
@@ -120,7 +119,7 @@ func (s *Signatures) Get(relPath string) ([]byte, error) {
 	if val, ok := s.SignaturesMap[filepath.ToSlash(relPath)]; ok {
 		return val, nil
 	}
-	return nil, errors.New("Signature for file not found")
+	return nil, fmt.Errorf("signature for file '%s' not found", relPath)
 }
 
 // Remove removes a signature of a file given a relative path
