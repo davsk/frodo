@@ -1,6 +1,7 @@
 package updater
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -61,7 +62,7 @@ func (u *Updater) findExecutableRemotePath() (string, error) {
 		return nil
 	})
 	if err != nil {
-		return "", err
+		return "", fmt.Errorf("could not find excutable remote path: %w", err)
 	}
 	return executableRemotePath, nil
 }
@@ -164,4 +165,15 @@ func (u *Updater) Rollback() (err error) {
 		return err
 	}
 	return executablePatcher.Rollback()
+}
+
+// CleanUp removes the old executable after updating. (*.old files)
+// Warning: This also prevents any rollback in the future.
+func (u *Updater) CleanUp() (err error) {
+	executablePatcher, err := u.getExecutablePatcher("")
+	if err != nil {
+		return err
+	}
+
+	return executablePatcher.CleanUp()
 }
